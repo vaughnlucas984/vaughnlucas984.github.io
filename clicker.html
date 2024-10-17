@@ -37,9 +37,9 @@
     if (score >= price){
     score = score - price
     document.getElementById("scoretext").innerHTML= "score: " + score
-    price = price * 1.1
+    price = price * 2
     document.getElementById("upgradecost").innerHTML= "upgrade cost: " + price
-    clickpower = clickpower + 1
+    clickpower = clickpower * 2
     document.getElementById("clickpowertext").innerHTML= "click power: " + clickpower
   }
   }
