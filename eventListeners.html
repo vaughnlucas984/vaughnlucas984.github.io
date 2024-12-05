@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>event listener</title>
+  <style>
+    
+  </style>
+</head>
+<body>
+    <img id="catImage" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSG_RsAyQMNZWCpWtMQEMVflm7LE5AyOEmO6hJd2_E-Y5EieXc:https://images.unsplash.com/photo-1543852786-1cf6624b9987%3Ffm%3Djpg%26q%3D60%26w%3D3000%26ixlib%3Drb-4.0.3%26ixid%3DM3wxMjA3fDB8MHxzZWFyY2h8N3x8Y2F0c3xlbnwwfHwwfHx8MA%253D%253D&s">
+    <img id="sizeImage" src="https://i.etsystatic.com/23297885/r/il/975411/4700973751/il_570xN.4700973751_ifzv.jpg">
+    <p id="color">click me or smthn idc im just a paragraph i cant boss you around</p>
+    <p id="numberText">1</p>
+</body>
+</html>
+<script>
+    function sayCat() {
+        alert("cat!")
+    }
+    document.getElementById("catImage").addEventListener("click", sayCat)
+    function changeColor() {
+        document.getElementById("color").style.color = "red";
+    }
+    document.getElementById("color").addEventListener("click", changeColor)
+    function growImage() {
+        document.getElementById("sizeImage").style.width = "912px";
+        document.getElementById("sizeImage").style.length = "1140px";
+    }
+    document.getElementById("sizeImage").addEventListener("mouseover", growImage)
+    function shrinkImage () {
+        document.getElementById("sizeImage").style.width = "456px";
+        document.getElementById("sizeImage").style.length = "570px";
+    }
+    document.getElementById("sizeImage").addEventListener("mouseleave", shrinkImage)
+    var numberOfText = 1
+    document.getElementById("numberText").addEventListener("click", changeNumber)
+    function changeNumber() {
+    numberOfText = numberOfText + 1
+    console.log(numberOfText)
+    document.getElementById("numberText").innerHTML = numberOfText
+    }
+</script>

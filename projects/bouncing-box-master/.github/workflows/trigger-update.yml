@@ -1,8 +1,9 @@
 name: Trigger Update in fundamentals-projects-template
 
 on:
+  workflow_dispatch:
   push:
-    branches: [main]
+    branches: [master]
 
 jobs:
   trigger:

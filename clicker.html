@@ -9,6 +9,7 @@
     p {
       color: black;
     }
+
     #gambleresults {
       size: 20
     }
@@ -25,6 +26,10 @@
   <p>triples click power, but only works 1/5 of the time</p>
   <p id="gambleresults"> </p>
   <p id="clickpowertext">click power: 1</p>
+  <button id="prestigebutton">prestige</button>
+  <p id="prestigepricetext">prestige price: 100000</p>
+  <p>prestiging resets click power, but makes all clicks worth 2x permanently</p>
+  <p id="clickmultipliertext">click multiplier: 1</p>
   <audio controls>
     <source src="mixkit-hip-hop-02-738.mp3" type="audio/mpeg">
   </audio>
@@ -35,13 +40,16 @@
   document.getElementById("dad").addEventListener("click", up)
   document.getElementById("upgradebutton").addEventListener("click", upgrade)
   document.getElementById("gamblebutton").addEventListener("click", gamble)
+  document.getElementById("prestigebutton").addEventListener("click", prestige)
   var score = 0
   var clickpower = 1
   var price = 20
   var gambleprice = 10
   var randomgamble = 1
+  var clickmultiplier = 1
+  var prestigeprice = 100000
   function up() {
-    score = score + clickpower
+    score = clickpower * clickmultiplier + score
     console.log(score)
     document.getElementById("scoretext").innerHTML = "score: " + score
   }
@@ -77,6 +85,22 @@
         price = price * 2
         gambleprice = gambleprice * 2
       }
+    }
+  }
+  function prestige() {
+    if (score >= prestigeprice) {
+      score = 0
+      clickpower = 1
+      price = 20
+      gambleprice = 10
+      clickmultiplier = clickmultiplier * 2
+      document.getElementById("clickmultipliertext").innerHTML = "click multiplier: " + clickmultiplier
+      prestigeprice = prestigeprice * 2
+      document.getElementById("prestigepricetext").innerHTML = "prestige price: " + prestigeprice
+      document.getElementById("scoretext").innerHTML = "score: " + score
+      document.getElementById("upgradecost").innerHTML = "upgrade cost: " + price
+      document.getElementById("clickpowertext").innerHTML = "click power: " + clickpower
+      document.getElementById("gamblepricetext").innerHTML = "gamble price: " + gambleprice
     }
   }
 </script>
