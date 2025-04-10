@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Circles</title>
+</head>
+
+<body>
+    <canvas id="canvas" height="600" width="1500"></canvas>
+</body>
+
+</html>
+
+<script>
+    var c = document.getElementById("canvas");
+    var ctx = c.getContext("2d");
+    var positionX = []
+    var positionY = []
+    var increaseX = []
+    var increaseY = []
+    for(var i = 0; i < 1000; i += 1){
+        positionX[i] = Math.floor(Math.random() * 1200)
+        positionY[i] = Math.floor(Math.random() * 500)
+        increaseX[i] = Math.floor(Math.random() * 60 - 30)
+        increaseY[i] = Math.floor(Math.random() * 60 - 30)
+    }
+    setInterval(main, 50)
+    function main() {
+        ctx.clearRect(0, 0, 2000, 2000) 
+        for (var i = 0; i < 1000; i = i + 1) {
+            if (positionX[i] >= 1500) {
+                increaseX[i] *= -1
+            }
+            if (positionY[i] >= 600) {
+                increaseY[i] *= -1
+            }
+            if (positionX[i] <= 0) {
+                increaseX[i] *= -1
+            }
+            if (positionY[i] <= 0) {
+                increaseY[i] *= -1
+            }
+            positionX[i] += increaseX[i]
+            positionY[i] += increaseY[i]
+            ctx.beginPath()
+            ctx.arc(positionX[i], positionY[i], 10[i], 0, 7)
+            ctx.fill()
+        }
+    }
+</script>
